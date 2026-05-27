@@ -1,7 +1,7 @@
 # acumuladores para contar veículos estacionados (por tipo)
 cont_a = cont_b = cont_c = cont_d = 0
 #calcular quanto foi arrecadado
-arrecadado_a = arrecadado_b = 0
+arrecadado_total = 0
 # usarei o tempo como um intervalo de uma anotação para outra
 from time import sleep
 # saber qual é o dia da semana
@@ -32,7 +32,7 @@ else:
                 elif tempo < 60:
                         # tempo cobrado de 16 a 60 minutos.
                         valor_a = 1.50
-                        arrecadado_a += valor_a
+                        arrecadado_total += valor_a # adiciona ao total
                         print(f'Certo. De acordo com o tempo, você deve pagar R${valor_a:.2f}.')
                 else:
                     # cobra de permânencia adicional
@@ -42,7 +42,7 @@ else:
                     while tempo_restante > 0:
                         valor_b += 1.00
                         tempo_restante -= 60
-                        arrecadado_b += valor_b
+                    arrecadado_total += valor_b
                     print(f'Certo. De acordo com o tempo, você deve pagar R${valor_b:.2f}.')
                 if veiculos == 'Carro':
                     cont_a += 1
@@ -57,11 +57,11 @@ else:
             break
         print('-=' * 20)
         sleep(2)
-sleep(2)
+sleep(1)
 print(f'Ao todo, tivemos {cont_a} carros, {cont_b} motos e {cont_c} camionetes estacionados.')
-sleep(2)
-print(f'O valor arrecadado total é R${arrecadado_a + arrecadado_b:.2f}.')
-sleep(2)
+sleep(1)
+print(f'O valor arrecadado total é R${arrecadado_total:.2f}.')
+sleep(1)
 print(f'Ao todo, {cont_d} veículos estiveram isentos do pagamento.')
-sleep(2)
+sleep(1)
 print('Expediente finalizado.')
